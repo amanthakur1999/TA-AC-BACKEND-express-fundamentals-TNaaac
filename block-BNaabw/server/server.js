@@ -1,10 +1,11 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 var app = express();
-// var cookieParser = require('cookie-parser');
 app.use(express.json());
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
-
+app.use(logger('dev'));
 app.use((req, res, next) => {
   res.cookie('username', 'Aman');
   next();
